@@ -1,18 +1,13 @@
 const express = require("express");
 const app = express();
-app.use(express.json());
+app.use(express.json()); //middleware
 const notes = [];
 app.post("/notes", (req, res) => {
   console.log(req.body);
   notes.push(req.body);
-  res.status(201).json({
-    message: "Notes Created Successfully",
-  });
+  res.status(201).send("Created successfully");
 });
 app.get("/notes", (req, res) => {
-  res.status(200).json({
-    message: "notes fetched Successfully",
-    notes: notes,
-  });
+  res.json(notes);
 });
 module.exports = app;
