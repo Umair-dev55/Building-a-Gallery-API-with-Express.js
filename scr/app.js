@@ -1,29 +1,19 @@
 const express = require("express");
 const app = express();
-app.use(express.json()); //Middleware
+
+// middleware (important for JSON)
+app.use(express.json());
 const notes = [];
-//Post Method
 app.post("/notes", (req, res) => {
   console.log(req.body);
-  res.status(201).json({
-    message: "Notes Created Sucessfully",
-  });
   notes.push(req.body);
 });
-//Get Method
 app.get("/notes", (req, res) => {
-  res.status(200).json({
-    message: "Data Fetch Sucessfully",
+  res.status(201).json({
+    Message: "Data Fetched Sucessfully",
     notes: notes,
   });
 });
-//Delete Method
-app.delete("/notes/:index", (req, res) => {
-  const index = req.params.index;
-  delete notes[index];
-  res.status(200).json({
-    message: "Note Deleted Successfully",
-  });
-});
-//Patch Method
+const index = 1;
+app.delete("/notes/:index", (req, res) => {});
 module.exports = app;

@@ -1,4 +1,6 @@
 const app = require("./scr/app");
-app.listen(3000, () => {
-  console.log("Server is running on localhost 3000");
+// server start
+const post = 3000;
+app.listen(post, () => {
+  console.log(`Server is Running on http://localhost:${post}/`);
 });
